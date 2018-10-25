@@ -16,5 +16,5 @@ func (c *MainController) Get() {
 
 func (main *MainController) WelcomePage() {
 	main.Data["MarketSite"] = "Poloniex.com"
-	main.TplName = "main.tpl"
+	main.TplName = "main.html"
 }
