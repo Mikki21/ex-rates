@@ -85,7 +85,8 @@
       Official website:
       <a href="/main">{{.Website}}</a> /
       Contact me:
-      <a class="email" href="mailto:{{.Email}}">{{.Email}}</a>
+      <a class="email" href="mailto:{{.Email}}">{{.Email}}</a><br>
+      <a href="/main"> Show best usd currency</a>
     </div>
   </footer>
   <div class="backdrop"></div>
