@@ -11,6 +11,7 @@
     <div class="mycontainer">
       <div class="form-window">
         <form action = "/best" name=f1 method = "GET">
+        <h2 color='#FFFFFF'>{{ .error}}</h2>
           <h2>Choose your currency</h2>
           <p><label><input onClick="setAllCheckboxes('currency', this);" type="checkbox" />Select All</label></p>
           <div id="currency">

@@ -1,2 +1,5 @@
-# dlv-project
-Golang projects using heroku free service and beego framework.
+# easytrip
+Easy Trip Project
+
+Try [this](https://goeasytrip.herokuapp.com/)
+
