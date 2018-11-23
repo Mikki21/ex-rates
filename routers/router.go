@@ -20,5 +20,4 @@ func init() {
 	beego.Router("/", &controllers.MainController{})
 	beego.Router("/comparision", ratesController)
 	beego.Router("/best", bestController)
-
 }
