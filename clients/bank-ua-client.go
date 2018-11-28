@@ -7,17 +7,30 @@ import (
 	"log"
 	"net/http"
 
+	"github.com/astaxie/beego"
+	"github.com/astaxie/beego/cache"
+
 	"github.com/oreuta/easytrip/models"
 )
 
+var Bm cache.Cache
+
+func init() {
+	var err error
+	Bm, err = cache.NewCache("memory", `{"interval":1000}`)
+	if err != nil {
+		fmt.Printf("cache init failed: %v", err)
+	}
+	_ = Bm
+}
+
 // BankUAClient represents a common client to interact with a remote Bank Service
 type BankUAClient interface {
-	Get() (body []byte, err error)
 	GetCurrBank() (unpacked []models.CurrencyBank, err error)
 }
 
 // Get returns a remote Bank Service response
-func (bankClient BankUAClientImpl) Get() (body []byte, err error) {
+func (bankClient BankUAClientImpl) get() (banks []models.CurrencyBank, err error) {
 	res, err := bankClient.httpClient.Get(bankClient.baseURL)
 	if err != nil {
 		return nil, fmt.Errorf("Get url error: %v", err)
@@ -29,21 +42,31 @@ func (bankClient BankUAClientImpl) Get() (body []byte, err error) {
 		}
 	}()
 
-	return ioutil.ReadAll(res.Body)
-}
-
-// GetCurrBank returns array of structures CurrencyBank after unmarshalling
-func (bankClient BankUAClientImpl) GetCurrBank() (unpacked []models.CurrencyBank, err error) {
-	body, err := bankClient.Get()
+	body, err := ioutil.ReadAll(res.Body)
 	if err != nil {
 		return nil, fmt.Errorf("Get url error: %v", err)
 	}
-	err = json.Unmarshal(body, &unpacked)
+
+	err = json.Unmarshal(body, &banks)
 	if err != nil {
 		log.Printf("Unmarshal error: %v", err)
 		return nil, fmt.Errorf("Error BankUAClient(GetCurrBank):%v", err)
 	}
-	return unpacked, err
+	return
+}
+
+// GetCurrBank returns array of structures CurrencyBank after unmarshalling
+func (bankClient BankUAClientImpl) GetCurrBank() (unpacked []models.CurrencyBank, err error) {
+	if Bm.IsExist("easytrip") {
+		return Bm.Get("easytrip").([]models.CurrencyBank), err
+	}
+	unpacked, err = bankClient.get()
+	if err != nil {
+		err = fmt.Errorf("GetCurBank get() err: %v", err)
+	}
+	fmt.Println("asdasda")
+	Bm.Put("easytrip", unpacked, 0)
+	return
 }
 
 // BankUAClientImpl implements BankUAClient interface
@@ -56,7 +79,7 @@ type BankUAClientImpl struct {
 //*realize throu interface
 func New() BankUAClientImpl {
 	return BankUAClientImpl{
-		baseURL:    "http://bank-ua.com/export/exchange_rate_cash.json",
+		baseURL:    beego.AppConfig.String("urlBank"),
 		httpClient: &http.Client{},
 	}
 }

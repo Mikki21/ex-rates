@@ -35,8 +35,9 @@
           <input class="button" type="submit" onclick="f1.action='/best';" value="Best choice">      
           <input class="button" type="submit" onclick="f1.action='/comparision';" value="Compare">
         </form>
-      </div>
+      </div>     
     </div>
+    <div class="button-center"><a class="button" href = "/statistics">Get statistics</a></div>
   <script src="/static/js/reload.min.js"></script>
 </body>
 </html>

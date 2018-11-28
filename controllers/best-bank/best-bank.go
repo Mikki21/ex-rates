@@ -1,7 +1,10 @@
 package bestBankController
 
 import (
+	"time"
+
 	"github.com/astaxie/beego"
+	"github.com/astaxie/beego/toolbox"
 	"github.com/oreuta/easytrip/models"
 	"github.com/oreuta/easytrip/services/best-bank"
 )
@@ -16,34 +19,44 @@ func New(s bestBankService.BestBankServiceInterface) *bestBankController {
 }
 
 func (r *bestBankController) Get() {
+	toolbox.StatisticsMap.AddStatistics("GET", "/best", "&controllers.bestBankController.bestBankController", time.Duration(15000))
 	inpData := models.MainRequest{
 		Currency: r.GetStrings("currency"),
 		Option:   r.GetString("option"),
 		Bank:     r.GetStrings("bank"),
 	}
 
-	Sale, Buy, err := r.BestService.GetBestBanks(inpData)
+	{
+		i := 0
+		if inpData.Currency == nil {
+			r.Data["warningCurrency"] = "*Select Currency"
+			i++
+		}
+		if inpData.Bank == nil {
+			r.Data["warningBank"] = "*Select Bank"
+			i++
+		}
+		if i > 0 {
+			r.TplName = "index.tpl"
+			return
+		}
+	}
+
+	sale, buy, err := r.BestService.GetBestBanks(inpData)
 	if err != nil {
 		beego.Error("GetBestBanks func in BestService: %v", err)
 		return
 	}
-
-	if inpData.Currency == nil || inpData.Bank == nil {
-		r.Data["error"] = "Select currency and banks"
-		r.TplName = "error.tpl"
-		return
+	r.Layout = "bestBank_layout.tpl"
+	r.TplName = "bestBank.tpl"
+	r.Data["Buy"] = buy
+	r.Data["TitleBuy"] = ""
+	r.Data["Sale"] = sale
+	r.Data["TitleSale"] = ""
+	if buy != nil {
+		r.Data["TitleBuy"] = "Best Buy"
 	}
-	if inpData.Option == "sale" {
-		r.Data["Sale"] = Sale
-		r.TplName = "bestSale.tpl"
-	}
-	if inpData.Option == "buy" {
-		r.Data["Buy"] = Buy
-		r.TplName = "bestBuy.tpl"
-	}
-	if inpData.Option == "both" {
-		r.Data["Buy"] = Buy
-		r.Data["Sale"] = Sale
-		r.TplName = "both.tpl"
+	if sale != nil {
+		r.Data["TitleSale"] = "Best Sale"
 	}
 }

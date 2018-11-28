@@ -5,6 +5,7 @@ import (
 
 	"github.com/oreuta/easytrip/clients"
 	"github.com/oreuta/easytrip/models"
+	"github.com/oreuta/easytrip/sql1"
 )
 
 //RatesServiceInterface represents a common service to interact with BankUAClient
@@ -15,6 +16,9 @@ type RatesServiceInterface interface {
 //GetBankRates returns list of Banks response
 func (obj *BankRatingService) GetBankRates(r models.MainRequest) (banks []models.CurrencyBank, err error) {
 	unpack, err := obj.Client.GetCurrBank()
+	if err != nil {
+		unpack, err = sql1.JsnChanger(sql1.Db)
+	}
 	banks = getOption(r, getBanks(r, getCurrency(r, unpack)))
 	return
 }

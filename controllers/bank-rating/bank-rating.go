@@ -1,7 +1,10 @@
 package bankRatingController
 
 import (
+	"time"
+
 	"github.com/astaxie/beego"
+	"github.com/astaxie/beego/toolbox"
 	"github.com/oreuta/easytrip/models"
 	"github.com/oreuta/easytrip/services/bank-rating"
 )
@@ -21,6 +24,7 @@ func New(service bankRatingService.RatesServiceInterface) *RatesController {
 
 //Get function gets request gives and output data on display
 func (this *RatesController) Get() {
+	toolbox.StatisticsMap.AddStatistics("GET", "/comparision", "&controllers.bankRatingController.RatesController", time.Duration(13000))
 	r := models.MainRequest{
 		Currency: this.GetStrings("currency"),
 		Option:   this.GetString("option"),
