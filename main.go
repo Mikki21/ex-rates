@@ -24,7 +24,6 @@ func main() {
 	}
 
 	sql1.Db = sql1.CreateConnect(beego.AppConfig.String("connect"))
-
 	go sql1.Update(sql1.Db)
 	beego.Run()
 }

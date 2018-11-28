@@ -65,7 +65,7 @@ func (bankClient BankUAClientImpl) GetCurrBank() (unpacked []models.CurrencyBank
 		err = fmt.Errorf("GetCurBank get() err: %v", err)
 	}
 	fmt.Println("asdasda")
-	Bm.Put("easytrip", unpacked, 0)
+	Bm.Put("easytrip", unpacked, 1000)
 	return
 }
 

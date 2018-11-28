@@ -3,7 +3,6 @@ package sql1
 import (
 	"database/sql"
 	"fmt"
-	"log"
 	"time"
 
 	"github.com/oreuta/easytrip/clients"
@@ -33,11 +32,9 @@ func Update(Db *sql.DB) error {
 	var err error
 	var res []models.CurrencyBank
 	res, err = a.GetCurrBank()
-	log.Printf("%v", res)
 	if err != nil {
 		fmt.Printf("err for update sql is : %v", err)
 	}
-	fmt.Printf("%v", res)
 	for {
 		for i := range res {
 			_, err := Db.Query("update BanksList set RateBuy=? RateSale=? where BankName=? and CodeAlpha=?", res[i].RateBuy, res[i].RateSale, res[i].BankName, res[i].CodeAlpha)
