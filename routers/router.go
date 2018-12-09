@@ -1,14 +1,14 @@
 package routers
 
 import (
+	"github.com/Mikki21/dlv-project/clients"
+	"github.com/Mikki21/dlv-project/controllers"
+	"github.com/Mikki21/dlv-project/controllers/bank-rating"
+	"github.com/Mikki21/dlv-project/controllers/best-bank"
+	"github.com/Mikki21/dlv-project/controllers/statistics"
+	"github.com/Mikki21/dlv-project/services/bank-rating"
+	"github.com/Mikki21/dlv-project/services/best-bank"
 	"github.com/astaxie/beego"
-	"github.com/oreuta/easytrip/clients"
-	"github.com/oreuta/easytrip/controllers"
-	"github.com/oreuta/easytrip/controllers/bank-rating"
-	"github.com/oreuta/easytrip/controllers/best-bank"
-	"github.com/oreuta/easytrip/controllers/statistics"
-	"github.com/oreuta/easytrip/services/bank-rating"
-	"github.com/oreuta/easytrip/services/best-bank"
 )
 
 func init() {

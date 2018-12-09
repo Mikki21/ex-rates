@@ -4,8 +4,7 @@ import (
 	"reflect"
 	"testing"
 
-	"github.com/oreuta/easytrip/mocks"
-	"github.com/oreuta/easytrip/models"
+	"github.com/Mikki21/dlv-project/models"
 )
 
 func TestGetBankRates(t *testing.T) {

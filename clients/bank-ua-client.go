@@ -10,7 +10,7 @@ import (
 	"github.com/astaxie/beego"
 	"github.com/astaxie/beego/cache"
 
-	"github.com/oreuta/easytrip/models"
+	"github.com/Mikki21/dlv-project/models"
 )
 
 var Bm cache.Cache
@@ -64,7 +64,6 @@ func (bankClient BankUAClientImpl) GetCurrBank() (unpacked []models.CurrencyBank
 	if err != nil {
 		err = fmt.Errorf("GetCurBank get() err: %v", err)
 	}
-	fmt.Println("asdasda")
 	Bm.Put("easytrip", unpacked, 1000)
 	return
 }

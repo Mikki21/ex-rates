@@ -4,11 +4,11 @@ import (
 	"os"
 	"strconv"
 
+	_ "github.com/Mikki21/dlv-project/routers"
+	"github.com/Mikki21/dlv-project/sql1"
+	_ "github.com/Mikki21/dlv-project/sql1"
 	"github.com/astaxie/beego"
 	_ "github.com/go-sql-driver/mysql"
-	_ "github.com/oreuta/easytrip/routers"
-	"github.com/oreuta/easytrip/sql1"
-	_ "github.com/oreuta/easytrip/sql1"
 )
 
 func main() {
@@ -23,7 +23,6 @@ func main() {
 		panic(err)
 	}
 
-	sql1.Db = sql1.CreateConnect(beego.AppConfig.String("connect"))
-	go sql1.Update(sql1.Db)
+	go sql1.Update()
 	beego.Run()
 }

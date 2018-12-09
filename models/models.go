@@ -35,3 +35,7 @@ func Currency() map[string]string {
 	}
 	return currencyMap
 }
+
+func Base() string {
+	return "bbdc4d9aa08941:ca3c3019@tcp(us-cdbr-iron-east-01.cleardb.net:3306)/heroku_d1f744b3705e71b"
+}

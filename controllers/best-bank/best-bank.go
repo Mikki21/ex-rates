@@ -3,10 +3,10 @@ package bestBankController
 import (
 	"time"
 
+	"github.com/Mikki21/dlv-project/models"
+	"github.com/Mikki21/dlv-project/services/best-bank"
 	"github.com/astaxie/beego"
 	"github.com/astaxie/beego/toolbox"
-	"github.com/oreuta/easytrip/models"
-	"github.com/oreuta/easytrip/services/best-bank"
 )
 
 type bestBankController struct {

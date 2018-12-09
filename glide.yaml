@@ -1,4 +1,4 @@
-package: github.com/oreuta/easytrip
+package: github.com/Mikki21/dlv-project
 import:
 - package: github.com/astaxie/beego
   version: v1.11.0

@@ -5,10 +5,10 @@ import (
 	"sort"
 	"strings"
 
-	"github.com/oreuta/easytrip/sql1"
+	"github.com/Mikki21/dlv-project/sql1"
 
-	"github.com/oreuta/easytrip/clients"
-	"github.com/oreuta/easytrip/models"
+	"github.com/Mikki21/dlv-project/clients"
+	"github.com/Mikki21/dlv-project/models"
 )
 
 var nameOfBanks = map[string]string{
@@ -46,7 +46,7 @@ func (b BestBankService) GetBestBanks(data models.MainRequest) (bBSale, bBBuy []
 	banks, err := b.Client.GetCurrBank()
 	if err != nil {
 		fmt.Errorf("Method Get in Client BankUACient: %v", err)
-		banks, _ := sql1.JsnChanger(sql1.Db)
+		banks, _ := sql1.JsnChanger()
 		_ = banks
 	}
 
