@@ -1,7 +1,7 @@
 package mocks
 
 import (
-	"github.com/oreuta/easytrip/models"
+	"github.com/Mikki21/dlv-project/models"
 )
 
 type RatesServiceMock struct {

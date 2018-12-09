@@ -5,7 +5,7 @@ import (
 	"io/ioutil"
 	"net/http"
 
-	"github.com/oreuta/easytrip/models"
+	"github.com/Mikki21/dlv-project/models"
 )
 
 type BankUAClientMock interface {
