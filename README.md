@@ -1,5 +1,5 @@
 # easytrip
 Easy Trip Project
 
-Try [this](https://goeasytrip.herokuapp.com/)
+Try [this](https://dolgov-prj.herokuapp.com)
 
