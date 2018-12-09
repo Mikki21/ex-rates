@@ -1,30 +1,47 @@
-<div class = "mycontainer">
 
-<h1>Best Banks</h1>
-<h2>{{.TitleBuy}}</h2>
-{{range .Buy}}
-<div class="bank">
-<ul>
-<h2 class="bank-name">{{.BankName}}</h2>
-<li>
-{{.CodeAlpha}}: {{.RateBuy}}
-</li>
-<br>
-</ul>
-</div>
-{{end}}
+<header>
+    <div class="wrap header-wrap">
+        <div class="hamburger-logo"></div>
+        <div class="header-logo">Exchange Rates</div>
+    </div>
+</header>
 
-<h2>{{.TitleSale}}</h1>
-{{range .Sale}}
-<div class="bank">
-<ul>
-<h2 class="bank-name">{{.BankName}}</h2>
-<li>
-{{.CodeAlpha}}: {{.RateSale}}
-</li>
-<br>
-</ul>
+<div class="form-window">
+    <hr>
+<div class = "wrap">
+    <div class="side-box">
+    <div class="side">
+    <h2>{{.TitleBuy }}</h2>
+    {{range .Buy}}
+        <div class="bank">
+            <ul>
+                <h3 class="bank-name">{{.BankName}}</h3>
+                <li>{{.CodeAlpha}}: {{.RateBuy}}</li>
+            </ul>
+            
+        </div>
+        {{end}}
+    </div>
+
+
+    <div>
+    <h2>{{.TitleSale }}</h1>
+    {{range .Sale}}
+        <div class="bank">
+            <ul>
+            
+                <h3 class="bank-name">{{.BankName}}</h3>
+                <li>{{.CodeAlpha}}: {{.RateSale}}</li>
+                
+            </ul>
+        </div>
+        {{end}}
+    </div>
+    
+    </div>
+    
+
+    <hr class="bot_hr">
+    <a href="/" class="button button-center">Back</a>
 </div>
-{{end}}
-<a href="/" class="back">Back</a>
-</div>
+</div> 

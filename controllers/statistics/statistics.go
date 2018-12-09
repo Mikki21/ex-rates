@@ -1,9 +1,9 @@
 package statistics
 
 import (
-	_ "github.com/oreuta/easytrip/controllers"
-	_ "github.com/oreuta/easytrip/controllers/bank-rating"
-	_ "github.com/oreuta/easytrip/controllers/best-bank"
+	_ "github.com/Mikki21/dlv-project/controllers"
+	_ "github.com/Mikki21/dlv-project/controllers/bank-rating"
+	_ "github.com/Mikki21/dlv-project/controllers/best-bank"
 
 	"github.com/astaxie/beego"
 	"github.com/astaxie/beego/toolbox"

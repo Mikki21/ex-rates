@@ -5,7 +5,7 @@ import:
   - cache
   - toolbox
 - package: github.com/go-sql-driver/mysql
-- package: github.com/oreuta/easytrip
+- package: github.com/Mikki21/dlv-project
   subpackages:
   - controllers
   - controllers/bank-rating
