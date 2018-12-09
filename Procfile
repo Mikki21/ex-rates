@@ -1,1 +1,1 @@
-web: easytrip
+web: ex-rates

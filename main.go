@@ -15,7 +15,7 @@ func main() {
 	var err error
 	port := os.Getenv("PORT")
 	if port == "" {
-		port = "8081"
+		port = "8080"
 	}
 
 	beego.BConfig.Listen.HTTPPort, err = strconv.Atoi(port)
