@@ -25,7 +25,7 @@ func (this *IndexController) Get() {
 		beego.Error("Error:%v", err)
 		return
 	}
-
+	this.Data["MainNumber"] = this.IndexService.ToFixed((b[0].RateBuy+b[1].RateBuy)/2, 2)
 	this.Data["NBU"] = b[0]
 	this.Data["Others"] = b[1]
 	this.Layout = "main_layout.tpl"
