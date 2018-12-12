@@ -11,20 +11,24 @@ html, body{
 	margin: 0;
 	height: 100%;
 	width: 100%;
-	background: #323a4b;
+	background: #512da8;
 	font-size: 18px;
 	font-family: 'Roboto', sans-serif;
 	color: #fff;
-	overflow-x: hidden;
   }
   
   header{
-	position: absolute;
-	padding: 29px 0;
-	height: 75px;
-	width: 100%; 
-	background:#7a7f8a;
-	box-shadow: 0px 15px 15px -4px rgba(16, 20, 27, 0.21);
+		font-weight: 900;
+		font-size: 25px;
+		line-height: 75px;
+		position: fixed;
+		padding: 4px 0;
+		height: 75px;
+		width: 100%;
+		background: #512da8;
+		top: 0;
+		box-shadow: 0px -16px 15px 23px #512da8;
+		overflow: hidden;
   }
   
   hr{
@@ -41,22 +45,20 @@ html, body{
 	margin: 0 auto;
   }
 
+	.header-wrap a{
+		color: #fff;
+		text-decoration: none;
+	}
+
   .header-wrap{
 	display: flex;
 	align-items: center;
   }
-
-  .hamburger-logo{
-	width: 25px;
-	height: 18px;
-	background: red; 
-	margin-right: 15px;
-  }
   
   .form-window{
-	margin-top: 130px;
+	margin-top: 70px;
 	padding: 40px 0;
-	background: #323a4b;
+	background: #512da8;
 	width: 100%;
   }
 
@@ -79,6 +81,10 @@ html, body{
 	  justify-content: space-between;
   }
 
+	header h2{
+		font-size: 20px;
+	}
+
   .button {
 	width: 150px;
 	height: 32px;
@@ -88,7 +94,7 @@ html, body{
 	text-decoration: none;
 	outline: none;
 	color: #fff;
-	background-color: #323a4b;
+	background-color: #666666;
 	border-radius: 15px;
 	border: #7a7f8a 1px solid;
 	font-weight: 100;
@@ -97,7 +103,9 @@ html, body{
   }
   
   .button:hover {
-	  background-color: #B1A8B9;
+		background-color: #7a7f8a;
+		color: #f8d90f;
+		border:  #f8d90f 1px solid;
   }
   
   .button:active {
@@ -119,12 +127,13 @@ html, body{
 	font-size: 25px;
 	color: #323a4b;
 	line-height: 40px;
+	box-shadow: 0px 15px 15px -4px rgba(16, 20, 27, 0.21);
   }
 
   h2{
 	font-weight: 900;
 	font-size: 30px;
-	margin-bottom: 20px;
+	margin-bottom: 40px;
   }
   
   h2::before{
@@ -143,10 +152,11 @@ html, body{
 }
 
 .bank{
+	border:  #f8d90f 1px solid;
+	background: #7a7f8a;
 	width: 500px;
-	border: 1px solid #7a7f8a;
     border-radius: 10px;
-    margin-bottom: 10px;
+    margin-bottom: 30px;
     margin-left: 20px;
     padding: 0 10px;
     font-size: 18px;
@@ -157,10 +167,11 @@ html, body{
 
 .andbank{
 	width: 700px;
-    margin: 0 auto 20px auto;
+    margin: 0 auto 30px auto;
     line-height: 50px;
 		font-size: 20px;
 		background: #7a7f8a;
+		border: #f8d90f 1px solid;
 }
 
 .andbank h3,.nametitle{
@@ -172,7 +183,8 @@ html, body{
 	margin-bottom: 10px;
 	padding:0 5px;
 	border-radius: 15px;
-	background: #323a4b;
+	background: #512da8;
+	box-shadow: inset 0px 15px 15px -4px rgba(16, 20, 27, 0.21);
 }
 
 .side{

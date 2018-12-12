@@ -29,14 +29,16 @@ func (r *bestBankController) Get() {
 	{
 		i := 0
 		if inpData.Currency == nil {
-			r.Data["warningCurrency"] = "*Select Currency"
+			r.Data["IncorrectCurrency"] = true
 			i++
 		}
 		if inpData.Bank == nil {
-			r.Data["warningBank"] = "*Select Bank"
+			r.Data["IncorrectBank"] = true
 			i++
 		}
 		if i > 0 {
+
+			r.Layout = "main_layout.tpl"
 			r.TplName = "index.tpl"
 			return
 		}
@@ -50,9 +52,9 @@ func (r *bestBankController) Get() {
 	r.Layout = "bestBank_layout.tpl"
 	r.TplName = "bestBank.tpl"
 	r.Data["Buy"] = buy
-	r.Data["TitleBuy"] = ""
+	r.Data["TitleBuy"] = "No Banks for buying"
 	r.Data["Sale"] = sale
-	r.Data["TitleSale"] = ""
+	r.Data["TitleSale"] = "No Banks for saleing"
 	if buy != nil {
 		r.Data["TitleBuy"] = "Best Buy"
 	}

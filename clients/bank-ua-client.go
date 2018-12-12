@@ -27,6 +27,44 @@ func init() {
 // BankUAClient represents a common client to interact with a remote Bank Service
 type BankUAClient interface {
 	GetCurrBank() (unpacked []models.CurrencyBank, err error)
+	GetForIndex() (nbu []models.CurrencyBank, unpacked []models.CurrencyBank, err error)
+}
+
+func (bankclient BankUAClientImpl) GetForIndex() (nbu []models.CurrencyBank, unpacked []models.CurrencyBank, err error) {
+	set1, err := bankclient.get()
+	var set2 []models.IndexClient
+	res, err := bankclient.httpClient.Get("https://bank.gov.ua/NBUStatService/v1/statdirectory/exchange?json")
+	if err != nil {
+		return nil, nil, fmt.Errorf("Get url error: %v", err)
+	}
+
+	defer func() {
+		if res.Body != nil {
+			res.Body.Close()
+		}
+	}()
+
+	body, err := ioutil.ReadAll(res.Body)
+	if err != nil {
+		return nil, nil, fmt.Errorf("Get url error: %v", err)
+	}
+
+	err = json.Unmarshal(body, &set2)
+	if err != nil {
+		log.Printf("Unmarshal error: %v", err)
+		return nil, nil, fmt.Errorf("Error BankUAClient(GetCurrBank):%v", err)
+	}
+	var a models.CurrencyBank
+	for i := range set2 {
+		if set2[i].Cc == "USD" {
+			a.BankName = "NBU"
+			a.CodeAlpha = set2[i].Cc
+			a.RateBuy = set2[i].Rate
+			a.RateSale = set2[i].Rate
+			nbu = append(nbu, a)
+		}
+	}
+	return nbu, set1, nil
 }
 
 // Get returns a remote Bank Service response

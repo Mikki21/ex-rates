@@ -32,10 +32,13 @@ func (this *RatesController) Get() {
 	}
 	if r.Currency == nil {
 		this.Data["IncorrectCurrency"] = true
+
+		this.Layout = "main_layout.tpl"
 		this.TplName = "index.tpl"
 		return
 	} else if r.Bank == nil {
 		this.Data["IncorrectBank"] = true
+		this.Layout = "main_layout.tpl"
 		this.TplName = "index.tpl"
 		return
 	}

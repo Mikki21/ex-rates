@@ -11,20 +11,24 @@ html, body{
   margin: 0;
   height: 100%;
   width: 100%;
-  background: #0091b5;
+  background: #512da8;
   font-size: 18px;
   font-family: 'Roboto', sans-serif;
   color: #fff;
-  overflow-x: hidden;
 }
 
 header{
-  position: absolute;
-  padding: 29px 0;
-  height: 75px;
-  width: 100%; 
-  background: #323a4b;
-  box-shadow: 0px 15px 15px -4px rgba(16, 20, 27, 0.21);
+  font-weight: 900;
+		font-size: 25px;
+		line-height: 75px;
+		position: fixed;
+		padding: 4px 0;
+		height: 75px;
+		width: 100%;
+		background: #323a4b;
+		box-shadow: 0px -16px 15px 23px #323a4b;
+    overflow: hidden;
+    top: 0;
 }
 
 hr{
@@ -71,6 +75,10 @@ input{
   position: relative;
 }
 
+header h2{
+  font-size: 20px;
+}
+
 .bot_hr{
   margin-top: 27px;
 }
@@ -80,11 +88,9 @@ input{
   align-items: center;
 }
 
-.hamburger-logo{
-  width: 25px;
-  height: 18px;
-  background: red; 
-  margin-right: 15px;
+.header-wrap a{
+  color: #fff;
+  text-decoration: none;
 }
 
 .choose-box{
@@ -99,10 +105,11 @@ input{
 }
 
 .form-window{
-  margin-top: 130px;
+  margin-top: 70px;
   padding: 40px 0;
-  background: #323a4b;
+  background: #512da8;
   width: 100%;
+  overflow: hidden;
 }
 
 .wrap{
@@ -136,17 +143,20 @@ input{
   text-align: center;
   text-decoration: none;
   outline: none;
-  color: #fff;
-  background-color: #323a4b;
+  color: #323a4b;
+  background-color: #f8d90f;
   border-radius: 15px;
   border: #7a7f8a 1px solid;
   font-weight: 100;
   text-transform: uppercase;
   margin: 0;
+  line-height: 32px;
 }
 
 .button:hover {
-	background-color: #B1A8B9;
+  background-color: #7a7f8a;
+  color: #f8d90f;
+  border:  #f8d90f 1px solid;
 }
 
 .button:active {
@@ -174,7 +184,7 @@ input{
   width: 0;
   height: 0;
   border-style: solid;
-  border-width: 21px 24px 21px 0;
+  border-width: 21px 24px 20px 0;
   border-color: transparent #ad4141 transparent transparent;
   top: 0;
 }
@@ -216,7 +226,7 @@ input{
   border-radius: 20px;
   font-weight: bold;
   font-size: 25px;
-  color: #323a4b;
+  color: #666666;
   line-height: 40px;
 }
   

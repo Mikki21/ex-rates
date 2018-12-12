@@ -1,11 +1,9 @@
 <header>
     <div class="wrap header-wrap">
-        <div class="hamburger-logo"></div>
-        <div class="header-logo">Exchange Rates</div>
+        <a href="/"><h2>Exchange Rates</h2></a>
     </div>
 </header>
 <div class="form-window">
-    <hr>
 <div class = "wrap">
         <h2 class="page-name nametitle">Rates Rating</h2>
         {{range $key,$val := .Banks}}
@@ -18,7 +16,6 @@
                 </ul>
             </div>
             {{end}}
-        <hr class="bot_hr">
         <a href="/" class="button button-center">Back</a>
 </div>
 </div>

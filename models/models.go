@@ -15,6 +15,11 @@ type CurrencyBank struct {
 	RateSale  float64 `json:",string"`
 }
 
+type IndexClient struct {
+	Cc   string
+	Rate float64
+}
+
 //CurrencyBanks is an array of CurrencyBank
 type CurrencyBanks []CurrencyBank
 
