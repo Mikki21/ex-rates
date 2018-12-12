@@ -1,13 +1,25 @@
  <header>
     <div class="wrap header-wrap element">
-      <a href=""><h2>Exchange Rates</h2></a>
+      <a href="/"><h2>Exchange Rates</h2></a>
     </div>
   </header>
-    <div class="mycontainer">
-      <div class="form-window">
+    <div class="form-window form_2nd wrap">   
+      <div class="form_2nd_title">
+        <h2>UAH</h2>
+        <h2>By year</h2>
+      </div>
+      <div class="form_2nd_chart"></div>
+      <div class="form_2nd_txt">
+        For the past year, the <span>hryvnia is stable</span>. The average fluctuation of three hundred and sixty days - 
+        plus 0 kopecks in the range from 25.99 to 28.82 hryvnia per dollar. The minimum was reached on March 13,
+        and the maximum was January 23.
+      </div>
+    </div>
+    <div id="there" class="mycontainer">
+      <div class="form-window" id="screen_3">
         <div class="wrap">
         <form action = "/best" name=f1 method = "GET">
-          <hr>
+          <hr class="inside_hr">
         <div class="choose-box">
           <div id="currency">           
              <h2>Choose your currency</h2>

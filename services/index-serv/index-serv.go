@@ -16,17 +16,21 @@ type IndexServiceInterface interface {
 //GetBankRates returns list of Banks response
 func (obj *IndexService) IndexGet() (banks []models.CurrencyBank, err error) {
 	banks, b, err := obj.Client.GetForIndex()
+	var cnt int
 	var totalBuy, totalSale float64
 	for i := range b {
-		totalBuy += b[i].RateBuy
-		totalSale += b[i].RateSale
+		if b[i].CodeAlpha == "USD" {
+			cnt++
+			totalBuy += b[i].RateBuy
+			totalSale += b[i].RateSale
+		}
 	}
 
 	banks[0].RateBuy = obj.ToFixed(banks[0].RateBuy, 2)
 	banks[0].RateSale = obj.ToFixed(banks[0].RateSale, 2)
 
-	q1 := obj.ToFixed(totalSale/float64(len(b)), 2)
-	q2 := obj.ToFixed(totalBuy/float64(len(b)), 2)
+	q1 := obj.ToFixed(totalSale/float64(cnt), 2)
+	q2 := obj.ToFixed(totalBuy/float64(cnt), 2)
 	i := models.CurrencyBank{
 		BankName:  "Банки",
 		CodeAlpha: "USD",

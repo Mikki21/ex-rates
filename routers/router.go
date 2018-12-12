@@ -15,14 +15,14 @@ import (
 func init() {
 	ratesclient := clients.New()
 
-	ratesService := bankRatingService.New(ratesclient)
-	ratesController := bankRatingController.New(ratesService)
-
-	bestService := bestBankService.New(ratesclient)
-	bestController := bestBankController.New(bestService)
-
 	indexService := indexService.New(ratesclient)
 	indexController := indexServiceController.New(indexService)
+
+	ratesService := bankRatingService.New(ratesclient)
+	ratesController := bankRatingController.New(ratesService, indexService)
+
+	bestService := bestBankService.New(ratesclient)
+	bestController := bestBankController.New(bestService, indexService)
 
 	beego.Router("/", indexController)
 	beego.Router("/comparision", ratesController)

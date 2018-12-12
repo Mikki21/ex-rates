@@ -25,10 +25,11 @@ header{
 		padding: 4px 0;
 		height: 75px;
 		width: 100%;
-		background: #323a4b;
-		box-shadow: 0px -16px 15px 23px #323a4b;
+		background: #303f9f;
+		box-shadow: 0px -16px 15px 23px #303f9f;
     overflow: hidden;
     top: 0;
+    z-index: 20;
 }
 
 hr{
@@ -80,7 +81,7 @@ header h2{
 }
 
 .bot_hr{
-  margin-top: 27px;
+  margin-top: 90px;
 }
 
 .header-wrap{
@@ -105,11 +106,71 @@ header h2{
 }
 
 .form-window{
-  margin-top: 70px;
-  padding: 40px 0;
+  padding-top: 70px;
   background: #512da8;
   width: 100%;
-  overflow: hidden;
+  overflow-x: hidden;
+  height: 600px;
+}
+
+.form_1st{
+  background: #303f9f;
+  margin-top: 70px;
+}
+
+.form_1st_flex{
+  width: 1080px;
+  display: flex;
+  justify-content: space-between;
+  position: absolute;
+  top: 252px;
+  right: calc(50% - 540px);
+}
+
+.form_1st_flex ul{
+  text-align: center;
+}
+
+.form_1st_title li{
+  text-align: right;
+}
+
+.form_1st_flex h3{
+  font-weight: 900;
+  font-size: 30px;
+  color: #f8d90f;
+}
+
+.form_1st_flex h5{
+  font-weight: 900;
+  font-size: 20px;
+  line-height: 70px;
+}
+
+.form_1st_number hr{
+  position: relative;
+}
+
+#hr-1st{
+  margin-top: 51px;
+}
+
+#hr-2nd{
+  margin-top: 70px;
+}
+
+#hr-3rd{
+  margin-top: 70px;
+}
+
+.choose-box h2{
+  margin-bottom: 40px;
+}
+
+.form_1st_number{
+  font-size: 190px;
+  color: #f8d90fc9;
+  margin: -7px;
 }
 
 .wrap{
@@ -234,4 +295,77 @@ header h2{
 li{
 	list-style: none;
 	padding: 0;
+}
+
+.inside_hr{
+  margin-bottom: 70px;
+}
+
+.form_1st h2,
+.form_2nd h2{
+  font-size: 40px;
+}
+
+.form_2nd{
+  height: 875px;
+}
+
+.form_2nd_title{
+  margin: 75px 0 80px 0;
+}
+
+.form_2nd_chart{
+  background: #ad4141;
+  margin: 0 auto;
+  width: 1087px;
+  height: 348px;
+  background: url("../img/chart.JPG") no-repeat;
+  background-size: 100% 100%;
+  margin-bottom: 80px;
+}
+
+.form_2nd_txt span{
+  color: #f8d90f;
+}
+
+.form_1st_pointer {
+  display: block;
+  background: #ad4141;
+  display: block;
+  width: 35px;
+  height: 28px;
+  background: url("../img/pointer.png") no-repeat;
+  background-size: 100% 100%;
+  margin: 0 auto;
+  margin-top: 180px;
+  animation-play-state: paused;
+}
+
+#screen_3{
+  background: #2e5aad;
+}
+
+.form_1st_pointer:hover{
+  animation: buttonafter 1.5s infinite;
+}
+
+@keyframes buttonafter {
+  0%   {margin-top: 180px;}
+  10%   {margin-top: 180px;}
+  15%  {margin-top: 193px;}
+  30%  {margin-top: 183px;}
+  45%  {margin-top: 193px;}
+  60%  {margin-top: 188px;}
+  75%  {margin-top: 193px;}
+  100% {margin-top: 180px;}
+}
+
+.header_screen_2{
+  background: #512da8;
+  box-shadow: 0px -16px 15px 23px #512da8;
+}
+
+.header_screen_3{
+  background: #2e5aad;
+  box-shadow: 0px -16px 15px 23px #2e5aad;
 }

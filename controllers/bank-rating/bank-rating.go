@@ -3,6 +3,8 @@ package bankRatingController
 import (
 	"time"
 
+	"github.com/Mikki21/dlv-project/services/index-serv"
+
 	"github.com/Mikki21/dlv-project/models"
 	"github.com/Mikki21/dlv-project/services/bank-rating"
 	"github.com/astaxie/beego"
@@ -13,12 +15,14 @@ import (
 type RatesController struct {
 	beego.Controller
 	RatesService bankRatingService.RatesServiceInterface
+	Indexserv    indexService.IndexServiceInterface
 }
 
 //New create a new RatesController
-func New(service bankRatingService.RatesServiceInterface) *RatesController {
+func New(service bankRatingService.RatesServiceInterface, s1 indexService.IndexServiceInterface) *RatesController {
 	return &RatesController{
 		RatesService: service,
+		Indexserv:    s1,
 	}
 }
 
@@ -30,16 +34,24 @@ func (this *RatesController) Get() {
 		Option:   this.GetString("option"),
 		Bank:     this.GetStrings("bank"),
 	}
+	ind, _ := this.Indexserv.IndexGet()
+	i := 0
 	if r.Currency == nil {
 		this.Data["IncorrectCurrency"] = true
-
-		this.Layout = "main_layout.tpl"
-		this.TplName = "index.tpl"
-		return
-	} else if r.Bank == nil {
+		i++
+	}
+	if r.Bank == nil {
 		this.Data["IncorrectBank"] = true
+		i++
+	}
+	if i > 0 {
+		this.Data["MainNumber"] = this.Indexserv.ToFixed((ind[0].RateBuy+ind[1].RateBuy)/2, 2)
+		this.Data["NBU"] = ind[0]
+		this.Data["Others"] = ind[1]
 		this.Layout = "main_layout.tpl"
 		this.TplName = "index.tpl"
+		this.LayoutSections = make(map[string]string)
+		this.LayoutSections["Second"] = "today.tpl"
 		return
 	}
 	b, err := this.RatesService.GetBankRates(r)

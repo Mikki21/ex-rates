@@ -5,6 +5,7 @@ import (
 
 	"github.com/Mikki21/dlv-project/models"
 	"github.com/Mikki21/dlv-project/services/best-bank"
+	"github.com/Mikki21/dlv-project/services/index-serv"
 	"github.com/astaxie/beego"
 	"github.com/astaxie/beego/toolbox"
 )
@@ -12,10 +13,14 @@ import (
 type bestBankController struct {
 	beego.Controller
 	BestService bestBankService.BestBankServiceInterface
+	Indexserv   indexService.IndexServiceInterface
 }
 
-func New(s bestBankService.BestBankServiceInterface) *bestBankController {
-	return &bestBankController{BestService: s}
+func New(s bestBankService.BestBankServiceInterface, s1 indexService.IndexServiceInterface) *bestBankController {
+	return &bestBankController{
+		BestService: s,
+		Indexserv:   s1,
+	}
 }
 
 func (r *bestBankController) Get() {
@@ -25,7 +30,7 @@ func (r *bestBankController) Get() {
 		Option:   r.GetString("option"),
 		Bank:     r.GetStrings("bank"),
 	}
-
+	ind, _ := r.Indexserv.IndexGet()
 	{
 		i := 0
 		if inpData.Currency == nil {
@@ -37,9 +42,14 @@ func (r *bestBankController) Get() {
 			i++
 		}
 		if i > 0 {
-
+			r.Data["MainNumber"] = r.Indexserv.ToFixed((ind[0].RateBuy+ind[1].RateBuy)/2, 2)
+			r.Data["NBU"] = ind[0]
+			r.Data["Others"] = ind[1]
 			r.Layout = "main_layout.tpl"
 			r.TplName = "index.tpl"
+			r.LayoutSections = make(map[string]string)
+			r.LayoutSections["Second"] = "today.tpl"
+			r.LayoutSections["Scroll"] = "scrl.tpl"
 			return
 		}
 	}
